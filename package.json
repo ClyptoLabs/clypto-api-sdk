@@ -1,0 +1,49 @@
+{
+  "name": "clypto-sdk",
+  "version": "1.0.0",
+  "author": "clypto developer",
+  "description": "",
+  "homepage": "",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "main": "./dist/index.js",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "bunx tsc --build",
+    "types": "tsc --noEmit",
+    "lint": "biome check --write ./src",
+    "clean": "rm -rf node_modules",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "cross-fetch": "^4.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.24.0",
+    "@types/bun": "latest",
+    "eslint": "^9.24.0",
+    "globals": "^16.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
+    "prettier": "3.5.3",
+    "typescript-eslint": "^8.29.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ]
+}
