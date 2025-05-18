@@ -1,23 +1,35 @@
 {
-  "name": "@clypto/clypto-api-sdk",
-  "version": "1.0.0",
-  "author": "ClyptoLabs",
+  "name": "@clypto/api-sdk",
+  "version": "1.0.1",
   "description": "Clypto API SDK for cross-chain quote and swap aggregation",
+  "keywords": [
+    "clypto"
+  ],
   "homepage": "https://api.clypto.com",
-  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ClyptoLabs/clypto-api-sdk/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ClyptoLabs/clypto-api-sdk.git"
+    "url": "git+https://github.com/ClyptoLabs/clypto-api-sdk.git"
+  },
+  "license": "MIT",
+  "author": "ClyptoLabs",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
   },
   "main": "./dist/index.js",
-  "type": "module",
   "types": "./dist/index.d.ts",
-  "engines": {
-    "node": "22"
+  "directories": {
+    "example": "example"
   },
-  "publishConfig": {
-    "access": "public"
-  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "bun run clean && bunx tsc --build",
     "clean": "rimraf dist",
@@ -43,16 +55,13 @@
   "peerDependencies": {
     "typescript": "^5"
   },
+  "engines": {
+    "node": "22"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
-  },
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    }
-  },
-  "files": [
-    "dist"
-  ]
+  }
 }
