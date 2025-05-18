@@ -18,10 +18,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "baseUrl": "src",
     "outDir": "dist"
   },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "tsc-alias": {
+    "resolveFullPaths": true
+  },
+  "include": ["src", "example/index.ts"],
+  "exclude": ["node_modules", "example"]
 }
-

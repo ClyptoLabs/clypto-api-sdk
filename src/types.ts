@@ -1,4 +1,4 @@
-import { TokenData } from 'utils/token';
+import { TokenData } from './utils/token';
 
 export type Provider = {
   provider: string;
@@ -10,7 +10,7 @@ export type GetTokenParam = {
   provider?: string;
 };
 
-export type GetQuoteParams = {
+export type QuoteRequestParams = {
   srcChain: string;
   srcToken: string;
   destChain: string;
@@ -23,7 +23,7 @@ export type GetQuoteParams = {
   excludeProvider?: string;
 };
 
-export type GetSwapParams = {
+export type SwapRequestParams = {
   srcChain: string;
   srcToken: string;
   destChain: string;
@@ -49,7 +49,7 @@ export type EvmTxParam = {
   data: string;
   value: string;
   gasPrice: string;
-  gas?: string;
+  gasLimit?: string;
 };
 
 export type DefaultTxParam = {

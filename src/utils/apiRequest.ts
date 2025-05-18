@@ -1,4 +1,4 @@
-import fetch from "cross-fetch";
+import fetch from 'cross-fetch';
 
 export class ApiRequest {
   private baseUrl: string;
@@ -8,26 +8,23 @@ export class ApiRequest {
     this.baseUrl = baseUrl;
 
     const defaultHeaders = {
-      Accept: "application/json",
-      "Content-Type": "application/json",
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     };
     this.headers = headers ? { ...defaultHeaders, ...headers } : defaultHeaders;
   }
 
   getParamUrl(paramObj: Record<string, string | number | boolean>) {
     const params = Object.fromEntries(
-      Object.entries(paramObj).map(([key, value]) => [key, String(value)])
+      Object.entries(paramObj).map(([key, value]) => [key, String(value)]),
     );
     return new URLSearchParams(params).toString();
   }
 
-  async get<T>(
-    endpoint: string,
-    headers: Record<string, string> = {}
-  ): Promise<T> {
+  async get<T>(endpoint: string, headers: Record<string, string> = {}): Promise<T> {
     const url = `${this.baseUrl}${endpoint}`;
     const options = {
-      method: "GET",
+      method: 'GET',
       headers: { ...this.headers, ...headers },
     };
 
@@ -41,8 +38,7 @@ export class ApiRequest {
           any
         >;
         const errorMessage =
-          errorBody?.message ||
-          `GET request failed with status: ${response.status}`;
+          errorBody?.message || `GET request failed with status: ${response.status}`;
         throw new ApiRequestError(errorMessage, response.status, errorBody);
       }
 
@@ -57,11 +53,11 @@ export class ApiRequest {
     endpoint: string,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     body: any,
-    headers: Record<string, string> = {}
+    headers: Record<string, string> = {},
   ): Promise<T> {
     const url = `${this.baseUrl}${endpoint}`;
     const options = {
-      method: "POST",
+      method: 'POST',
       headers: { ...this.headers, ...headers },
       body: JSON.stringify(body),
     };
@@ -69,15 +65,14 @@ export class ApiRequest {
     try {
       const response = await fetch(url, options);
 
-      if (response.status !== 201) {
+      if (response.status !== 201 && response.status !== 200) {
         const errorBody = (await response.json().catch(() => ({}))) as Record<
           string,
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           any
         >;
         const errorMessage =
-          errorBody?.message ||
-          `POST request failed with status: ${response.status}`;
+          errorBody?.message || `POST request failed with status: ${response.status}`;
         throw new ApiRequestError(errorMessage, response.status, errorBody);
       }
 
