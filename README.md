@@ -1,6 +1,6 @@
 # 🔗 Clypto API SDK
 
-**clypto-api-sdk** is a lightweight TypeScript SDK for accessing the [Clypto API](https://api.clypto.com/docs), a high-performance, cross-chain aggregator supporting seamless token swaps across 16+ blockchains and 6,000+ assets.
+**@clypto/api-sdk** is a lightweight TypeScript SDK for accessing the [Clypto API](https://api.clypto.com/docs), a high-performance, cross-chain aggregator supporting seamless token swaps across 16+ blockchains and 6,000+ assets.
 
 - 📦 Get Token List by providers, chains
 - 🚀 Quote & execute swaps
@@ -13,12 +13,13 @@
 ## 📦 Installation
 
 ```bash
-npm install @clypto/clypto-api-sdk
+npm install @clypto/api-sdk
 ```
 
 ## Usage
 
-```import { ClyptoApi } from 'clypto-api-sdk';
+```
+import { ClyptoApi } from '@clypto/api-sdk';
 
 const apiKey = 'your-api-key';
 const clypto = new ClyptoApi(apiKey);
