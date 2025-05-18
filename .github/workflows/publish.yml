@@ -39,7 +39,7 @@ jobs:
         run: bun run build
 
       - name: Publish to npm
-        if: steps.version_check.outputs.current == steps.version_check.outputs.previous
+        if: steps.version_check.outputs.current != steps.version_check.outputs.previous
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
