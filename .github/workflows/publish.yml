@@ -32,12 +32,6 @@ jobs:
           echo "current=$CURRENT_VERSION" >> $GITHUB_OUTPUT
           echo "previous=$PREV_VERSION" >> $GITHUB_OUTPUT
 
-      - name: Skip if version did not change
-        if: steps.version_check.outputs.current == steps.version_check.outputs.previous
-        run: |
-          echo "Version unchanged. Skipping publish."
-          exit 0
-
       - name: Install dependencies with Bun
         run: bun install --frozen-lockfile
 
@@ -45,6 +39,7 @@ jobs:
         run: bun run build
 
       - name: Publish to npm
+        if: steps.version_check.outputs.current == steps.version_check.outputs.previous
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
