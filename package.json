@@ -2,9 +2,9 @@
   "name": "clypto-sdk",
   "version": "1.0.0",
   "author": "ClyptoLabs",
-  "description": "",
+  "description": "Clypto API SDK for cross-chain quote and swap aggregation",
   "homepage": "https://api.clypto.com",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/ClyptoLabs/clypto-api-sdk.git"
@@ -14,6 +14,9 @@
   "types": "./dist/index.d.ts",
   "engines": {
     "node": "22"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "bun run clean && bunx tsc --build",
@@ -35,7 +38,6 @@
     "lint-staged": "^15.5.0",
     "prettier": "3.5.3",
     "rimraf": "^6.0.1",
-    "ts-node": "^10.9.2",
     "typescript-eslint": "^8.29.1"
   },
   "peerDependencies": {
@@ -46,7 +48,8 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "files": [
