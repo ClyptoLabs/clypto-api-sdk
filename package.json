@@ -1,6 +1,6 @@
 {
   "name": "@clypto/api-sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Clypto API SDK for cross-chain quote and swap aggregation",
   "keywords": [
     "clypto"
